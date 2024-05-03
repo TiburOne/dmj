@@ -1,0 +1,39 @@
+.filter-field {
+  margin-right: 10px; /* Ajusta el margen según tus necesidades */
+}
+
+/* clientes.component.css */
+
+.mat-form-field {
+  height: 36px; /* Ajusta esto para coincidir con la altura del botón */
+  line-height: normal;
+  padding: 0;
+}
+
+/* Puedes necesitar ajustar el padding y la altura de línea del input también */
+.mat-input-element {
+  padding: 0;
+  line-height: normal;
+}
+
+/* Ajustar la altura del botón si es necesario */
+button.mat-raised-button {
+  height: 36px; /* Asegúrate de que esto coincida con la altura de los inputs */
+}
+
+#filtro{
+  margin-left: 30px;
+  vertical-align: text-bottom;
+  width: 150px;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.mat-icon{
+  margin-right: 10px;
+}

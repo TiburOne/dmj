@@ -1,0 +1,15 @@
+<h2 *ngIf="!data" mat-dialog-title>Crear Tipo de Acoplado</h2>
+<h2 *ngIf="data" mat-dialog-title>Actualizar Tipo de Acoplado</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <input matInput [(ngModel)]="tipoAcoplado.tipo">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cantidad de Ejes</mat-label>
+    <input matInput type="number" [(ngModel)]="tipoAcoplado.cantidad_ejes">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="create_or_update()">Guardar</button>
+</mat-dialog-actions>

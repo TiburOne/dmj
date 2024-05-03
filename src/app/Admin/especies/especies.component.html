@@ -1,0 +1,45 @@
+<div>
+  <!-- Filtros -->
+  <mat-form-field class="filter-field" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="filters.name" placeholder="Nombre">
+  </mat-form-field>
+
+  <!-- Botón de filtro -->
+  <button id="filtro" mat-raised-button color="primary" (click)="applyFilters()">Filtrar</button>
+
+    <!-- Botón flotante para agregar nueva especie -->
+    <button mat-fab color="primary" class="add-button" (click)="addNewSpecies()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+</div>
+
+<!-- Tabla -->
+<table mat-table [dataSource]="dataSource">
+  <!-- Columna DNI -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Columna Nombre -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon  (click)="openEditModal(element)">edit</mat-icon>
+    </td>
+  </ng-container>
+
+  <!-- Fila de Cabecera -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <!-- Fila de Cuerpo -->
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

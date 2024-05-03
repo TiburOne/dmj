@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 bar">
+  <span>Dmj Trucks</span>
+  <span class="example-spacer"></span>
+  <button [matMenuTriggerFor]="mnuTransportistas" mat-button>Transportistas</button>
+  <button [matMenuTriggerFor]="mnuPolizas" mat-button>Viajes</button>
+  <button routerLink="/admin/especies" mat-button> Especies </button>
+  <button routerLink="/admin/tipo-acoplados" mat-button> Tipo Acoplados </button>
+
+  <mat-menu #mnuTransportistas>
+    <button routerLink="/admin/transportistas" mat-menu-item>Lista de Transportistas</button>
+  </mat-menu>
+
+
+  <mat-menu #mnuPolizas >
+    <button routerLink="" mat-menu-item> Crear Viajes Comunes </button>
+    <button routerLink="" mat-menu-item> Crear Movimiento Interno </button>
+    <button routerLink="" mat-menu-item> Listar Viajes Comunes </button>
+    <button routerLink="" mat-menu-item> Listar Movimientos Internos</button>
+
+  </mat-menu>
+
+</mat-toolbar>

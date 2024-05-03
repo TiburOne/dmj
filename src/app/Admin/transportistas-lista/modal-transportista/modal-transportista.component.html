@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>
+  {{ data ? "Actualizar Transportista" : "Crear Transportista" }}
+</h2>
+
+<form [formGroup]="transportistaForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="transportistaForm.get('nombre')?.errors?.['required']">
+        El nombre es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CUIT</mat-label>
+      <input matInput formControlName="cuit" type="number">
+      <mat-error *ngIf="transportistaForm.get('cuit')?.errors?.['required']">
+        El CUIT es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-error *ngIf="transportistaForm.get('email')?.errors?.['required']">
+        Debe ingresar un email válido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telefono">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button color="primary" (click)="create_or_update()" [disabled]="transportistaForm.invalid">Guardar</button>
+  </mat-dialog-actions>
+</form>

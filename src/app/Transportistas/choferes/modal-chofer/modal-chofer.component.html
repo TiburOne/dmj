@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>
+  {{ data ? "Actualizar Chofer" : "Crear Chofer" }}
+</h2>
+
+<form [formGroup]="choferForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="choferForm.get('nombre')?.errors?.['required']">
+        El nombre es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido">
+      <mat-error *ngIf="choferForm.get('apellido')?.errors?.['required']">
+        El apellido es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telefono">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button color="primary" (click)="createOrUpdate()" [disabled]="choferForm.invalid">Guardar</button>
+  </mat-dialog-actions>
+</form>

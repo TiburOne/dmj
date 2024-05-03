@@ -1,0 +1,14 @@
+.docs-navbar-header{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 4px 16px;
+}
+
+.example-spacer{
+  flex: 1 1 auto;
+}
+
+.bar{
+  margin-bottom: 50px;
+}

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 bar">
+  <span>Dmj Trucks | {{title}}</span>
+  <span class="example-spacer"></span>
+  <button [matMenuTriggerFor]="mnuTransportistas" mat-button>Camiones</button>
+  <button routerLink="/transportistas/especies" mat-button>Choferes</button>
+  <button [matMenuTriggerFor]="mnuPolizas" mat-button>Viajes</button>
+
+  <mat-menu #mnuTransportistas>
+    <button routerLink="/admin/transportistas" mat-menu-item>Lista de Transportistas</button>
+  </mat-menu>
+
+
+  <mat-menu #mnuPolizas >
+    <button routerLink="" mat-menu-item> Viajes Disponibles </button>
+    <button routerLink="" mat-menu-item> Viajes Realizados </button>
+    <button routerLink="" mat-menu-item> Viajes Pendientes de Pago </button>
+    <button routerLink="" mat-menu-item> Listar Movimientos Internos</button>
+
+  </mat-menu>
+
+</mat-toolbar>
