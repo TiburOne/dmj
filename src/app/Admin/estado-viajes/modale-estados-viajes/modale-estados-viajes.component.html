@@ -1,0 +1,11 @@
+<h2 *ngIf="!data" mat-dialog-title>Crear Estado de Viaje</h2>
+<h2 *ngIf="data" mat-dialog-title>Actualizar Estado de Viaje</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nombre de Estado</mat-label>
+    <input matInput [(ngModel)]="nombre">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="create_or_update()">Guardar</button>
+</mat-dialog-actions>

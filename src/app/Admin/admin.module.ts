@@ -13,6 +13,8 @@ import { ModalEspecieComponent } from './especies/modal-especie/modal-especie.co
 import { ModalTransportistaComponent } from './transportistas-lista/modal-transportista/modal-transportista.component';
 import { TipoAcopladoComponent } from './tipo-acoplado/tipo-acoplado.component';
 import { ModalTipoAcopladoComponent } from './tipo-acoplado/modal-tipo-acoplado/modal-tipo-acoplado.component';
+import { EstadoViajesComponent } from './estado-viajes/estado-viajes.component';
+import { ModaleEstadosViajesComponent } from './estado-viajes/modale-estados-viajes/modale-estados-viajes.component';
 
 
 
@@ -25,7 +27,9 @@ import { ModalTipoAcopladoComponent } from './tipo-acoplado/modal-tipo-acoplado/
     ModalEspecieComponent,
     ModalTransportistaComponent,
     TipoAcopladoComponent,
-    ModalTipoAcopladoComponent
+    ModalTipoAcopladoComponent,
+    EstadoViajesComponent,
+    ModaleEstadosViajesComponent
 
 
   ],
