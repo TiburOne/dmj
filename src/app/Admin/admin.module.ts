@@ -15,6 +15,10 @@ import { TipoAcopladoComponent } from './tipo-acoplado/tipo-acoplado.component';
 import { ModalTipoAcopladoComponent } from './tipo-acoplado/modal-tipo-acoplado/modal-tipo-acoplado.component';
 import { EstadoViajesComponent } from './estado-viajes/estado-viajes.component';
 import { ModaleEstadosViajesComponent } from './estado-viajes/modale-estados-viajes/modale-estados-viajes.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { CrearComponent } from './viajes/crear/crear.component';
+import { UbicacionComponent } from './ubicacion/crear/ubicacion.component';
+import { ListarComponent } from './ubicacion/listar/listar.component';
 
 
 
@@ -29,8 +33,10 @@ import { ModaleEstadosViajesComponent } from './estado-viajes/modale-estados-via
     TipoAcopladoComponent,
     ModalTipoAcopladoComponent,
     EstadoViajesComponent,
-    ModaleEstadosViajesComponent
-
+    ModaleEstadosViajesComponent,
+    CrearComponent,
+    UbicacionComponent,
+    ListarComponent
 
   ],
   imports: [
@@ -39,7 +45,8 @@ import { ModaleEstadosViajesComponent } from './estado-viajes/modale-estados-via
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Mapa ocupando la mitad del espacio en pantallas grandes, y todo el ancho en pantallas pequeñas -->
+    <div class="col-lg-6 col-12">
+      <google-map height="600px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="onMapClick($event)">
+        <map-marker [position]="marker.getPosition()!" [label]="marker.getLabel()!" [title]="marker.getTitle()!"></map-marker>
+      </google-map>
+    </div>
+
+    <!-- Formulario ocupando la otra mitad del espacio en pantallas grandes, y todo el ancho en pantallas pequeñas -->
+    <div class="col-lg-6 col-12">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre">
+          <div *ngIf="form.get('nombre')?.touched && form.get('nombre')?.hasError('required')" class="text-danger">
+            El nombre es obligatorio.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="latitud" class="form-label">Latitud</label>
+          <input type="text" class="form-control" id="latitud" formControlName="latitud" readonly>
+          <div *ngIf="form.get('latitud')?.touched && form.get('latitud')?.hasError('required')" class="text-danger">
+            La latitud es obligatoria.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="longitud" class="form-label">Longitud</label>
+          <input type="text" class="form-control" id="longitud" formControlName="longitud" readonly>
+          <div *ngIf="form.get('longitud')?.touched && form.get('longitud')?.hasError('required')" class="text-danger">
+            La longitud es obligatoria.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="ciudad" class="form-label">Ciudad</label>
+          <input type="text" class="form-control" id="ciudad" formControlName="ciudad" readonly>
+          <div *ngIf="form.get('ciudad')?.touched && form.get('ciudad')?.hasError('required')" class="text-danger">
+            La ciudad es obligatoria.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="provincia" class="form-label">Provincia</label>
+          <input type="text" class="form-control" id="provincia" formControlName="provincia" readonly>
+          <div *ngIf="form.get('provincia')?.touched && form.get('provincia')?.hasError('required')" class="text-danger">
+            La provincia es obligatoria.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" class="form-control" id="direccion" formControlName="direccion" readonly>
+          <div *ngIf="form.get('direccion')?.touched && form.get('direccion')?.hasError('required')" class="text-danger">
+            La dirección es obligatoria.
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-start">
+          <button type="button" class="btn btn-secondary me-2" (click)="closeForm()">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="saveForm()">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

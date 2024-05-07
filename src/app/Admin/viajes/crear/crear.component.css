@@ -1,0 +1,38 @@
+/* Estilos básicos para el mapa */
+.map-container {
+  height: 400px; /* Ajusta la altura según sea necesario */
+  width: 100%;
+}
+
+/* Estilos para el contenedor principal que incluye mapa y formulario */
+.container {
+  display: flex;
+  flex-direction: row; /* Elementos lado a lado en pantallas grandes */
+  align-items: flex-start;
+}
+
+/* Estilos para los contenedores de mapa y formulario para asegurar que ocupen espacio equitativo */
+.map-container, .form-container {
+  flex: 1;
+}
+
+/* Estilos para el formulario para añadir algo de padding */
+.form-container {
+  padding: 20px;
+}
+
+/* Hacer que cada campo del formulario ocupe el ancho completo */
+.mat-form-field.full-width {
+  width: 100%;
+}
+
+/* Ajustes responsivos para pantallas menores de 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Elementos uno encima del otro en pantallas pequeñas */
+  }
+
+  .map-container, .form-container {
+    width: 100%; /* Asegurarse de que ambos, mapa y formulario, usen el ancho completo */
+  }
+}
