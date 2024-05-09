@@ -8,6 +8,7 @@ import { EstadoViajesComponent } from './estado-viajes/estado-viajes.component';
 //import { CrearComponent } from './viajes/crear/crear.component';
 import { UbicacionComponent } from './ubicacion/crear/ubicacion.component';
 import { ListarComponent } from './ubicacion/listar/listar.component';
+import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
 
 const routes: Routes = [
   {path: '', component: LayoutComponent,
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'especies', component: EspeciesComponent},
       {path: 'tipo-acoplados', component: TipoAcopladoComponent},
       {path: 'estado-viajes', component: EstadoViajesComponent},
-      {path: 'ubicacion', component: ListarComponent}
+      {path: 'ubicacion', component: ListarComponent},
+      {path: 'viajes', component: ListarViajesComponent}
     ]
   }
 ];
