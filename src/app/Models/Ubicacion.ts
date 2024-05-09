@@ -10,6 +10,7 @@ export class Ubicacion implements Base{
   nombre: string = "";
   ciudad: string = "";
   provincia: string = "";
+  direccion: string= "";
 
   getText(): string {
     throw new Error("Method not implemented.");

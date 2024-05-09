@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { GeocodingService } from '../../services/geocoding.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CRUDService, SERVICE_CONFIG } from '../../services/crud.service';
 import { Ubicacion } from 'src/app/Models/Ubicacion';
 import Swal from 'sweetalert2';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-ubicacion',
@@ -17,10 +19,13 @@ import Swal from 'sweetalert2';
     }
   ],
 })
-export class UbicacionComponent {
+export class UbicacionComponent implements OnInit {
+
   center = { lat: 24.886, lng: -70.268 };  // Ajusta esto a una ubicación inicial
   zoom = 13;
   marker: google.maps.Marker;
+
+
   height: string = '600px';
   width: string = '600px';
 
@@ -31,7 +36,8 @@ export class UbicacionComponent {
   customAddress: string = '';
   isAddressEditable: boolean = false;
 
-  constructor(private fb: FormBuilder, private geocodingService: GeocodingService, private crudService: CRUDService<Ubicacion>) {
+  constructor(private fb: FormBuilder, private geocodingService: GeocodingService, private crudService: CRUDService<Ubicacion>,
+    public dialogRef: MatDialogRef<UbicacionComponent>, @Inject(MAT_DIALOG_DATA) public data: Ubicacion | null) {
 
     this.form = this.fb.group({
       nombre: ['', Validators.required],  // Validación de campo requerido
@@ -51,10 +57,20 @@ export class UbicacionComponent {
       title: 'Ubicación Seleccionada',
       animation: google.maps.Animation.DROP
     });
+
   }
   ngOnInit(): void {
-    this.getCurrentPosition();
+    if (this.data) {
+      this.form.patchValue(this.data);
+      this.setMarker(this.data.latitud, this.data.longitud);
+      this.center = { lat: this.data.latitud, lng: this.data.longitud };
+
+    }
+    else {
+      this.getCurrentPosition();
+    }
   }
+
   onMapClick(event: google.maps.MapMouseEvent) {
     if (event.latLng) {
       const lat = event.latLng.lat();
@@ -82,20 +98,51 @@ export class UbicacionComponent {
     });
   }
 
+  markerOptions: google.maps.MarkerOptions = {
+    icon: '/assets/google_maps_new_logo_icon.png',
+
+  };
+
   setMarker(lat: number, lng: number) {
+
+    const svgMarker = {
+      path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+      fillColor: "blue",
+      fillOpacity: 0.6,
+      strokeWeight: 0,
+      rotation: 0,
+      scale: 2,
+      anchor: new google.maps.Point(0, 20),
+    };
+
+    this.markerOptions = {
+      icon: svgMarker,
+      draggable: true,
+      title: "Location",
+      label: "Locxtion",
+      animation: google.maps.Animation.DROP,
+    };
     this.marker = new google.maps.Marker({
       position: {
         lat: lat,
         lng: lng
       },
+
       label: {
-        color: 'red',
-        text: 'Seleccionado',  // Puedes personalizar este texto
+        text: 'Ubicación',  // Puedes personalizar este texto
+        fontWeight: 'Bold',
+        fontSize: '16px',
+        color: 'red'
       },
+      draggable: true,
       title: 'Ubicación Seleccionada',  // Tooltip que aparece al pasar el mouse sobre el marcador
-      animation: google.maps.Animation.DROP,  // Animación al aparecer el marcador
+        // Animación al aparecer el marcador
+
       //options: { animation: google.maps.Animation.DROP }
+
     });
+
+
   }
 
   // Función para actualizar el formulario con los datos del marcador
@@ -160,28 +207,40 @@ export class UbicacionComponent {
       ubicacion.longitud = longitud;
       ubicacion.ciudad = ciudad;
       ubicacion.provincia = provincia;
+      ubicacion.direccion = direccion;
 
-      this.crudService.create(ubicacion).subscribe({
-        next: (res) => {
-          console.log('Ubicación creada con éxito:', res);
-          Swal.fire({
-            title: '¡Éxito!',
-            text: 'La ubicación ha sido creada exitosamente.',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
-          // Opcional: redirigir o recargar componentes/página
-        },
-        error: (err) => {
-          console.error('Error creando ubicación:', err);
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un problema al crear la ubicación.',
-            icon: 'error',
-            confirmButtonText: 'Entendido'
-          });
-        }
-      });
+      if (this.data && this.data.id > 0) {
+        ubicacion.id = this.data.id;
+        this.crudService.update(this.data.id, ubicacion).subscribe({
+          next: (res) => {
+            this.dialogRef.close(true);
+          },
+          error: (err) => {
+            console.error('Error actualizando ubicación:', err);
+            Swal.fire('Error', 'No se pudo actualizar la ubicación', 'error');
+          }
+          //error => Swal.fire('Error', 'No se pudo actualizar la ubicación', 'error')
+        });
+      } else {
+        this.crudService.create(ubicacion).subscribe({
+          next: (res) => {
+            console.log('Ubicación creada con éxito:', res);
+            this.dialogRef.close(true);
+
+          },
+          error: (err) => {
+            console.error('Error creando ubicación:', err);
+            Swal.fire({
+              title: 'Error',
+              text: 'Hubo un problema al crear la ubicación.',
+              icon: 'error',
+              confirmButtonText: 'Entendido'
+            });
+          }
+        });
+
+      }
+
       // Aquí puedes procesar el formulario como necesites
     } else {
       console.error('Formulario no es válido');
@@ -220,4 +279,13 @@ export class UbicacionComponent {
   selectAll(event: MouseEvent): void {
     (event.target as HTMLInputElement).select();
   }
+
+  onMapEndDrag($event: any) {
+    console.log($event);
+    this.setMarker($event.latLng.lat(), $event.latLng.lng())
+    this.center = { lat: $event.latLng.lat(), lng: $event.latLng.lng() };
+
+      this.fetchLocationData($event.latLng.lat(), $event.latLng.lng());
+  }
+
 }

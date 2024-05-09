@@ -5,8 +5,9 @@ import { TransportistasListaComponent } from './transportistas-lista/transportis
 import { EspeciesComponent } from './especies/especies.component';
 import { TipoAcopladoComponent } from './tipo-acoplado/tipo-acoplado.component';
 import { EstadoViajesComponent } from './estado-viajes/estado-viajes.component';
-import { CrearComponent } from './viajes/crear/crear.component';
+//import { CrearComponent } from './viajes/crear/crear.component';
 import { UbicacionComponent } from './ubicacion/crear/ubicacion.component';
+import { ListarComponent } from './ubicacion/listar/listar.component';
 
 const routes: Routes = [
   {path: '', component: LayoutComponent,
@@ -15,7 +16,7 @@ const routes: Routes = [
       {path: 'especies', component: EspeciesComponent},
       {path: 'tipo-acoplados', component: TipoAcopladoComponent},
       {path: 'estado-viajes', component: EstadoViajesComponent},
-      {path: 'crear-viaje', component: UbicacionComponent}
+      {path: 'ubicacion', component: ListarComponent}
     ]
   }
 ];
