@@ -13,7 +13,7 @@ export class Ubicacion implements Base{
   direccion: string= "";
 
   getText(): string {
-    throw new Error("Method not implemented.");
+    return this.nombre + this.direccion;
   }
 
   getEndPoint(): string {
