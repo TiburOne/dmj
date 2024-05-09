@@ -19,6 +19,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 //import { CrearComponent } from './viajes/crear/crear.component';
 import { UbicacionComponent } from './ubicacion/crear/ubicacion.component';
 import { ListarComponent } from './ubicacion/listar/listar.component';
+import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
+import { CrearViajesComponent } from './viajes/crear-viajes/crear-viajes.component';
 
 
 
@@ -36,7 +38,9 @@ import { ListarComponent } from './ubicacion/listar/listar.component';
     ModaleEstadosViajesComponent,
     //CrearComponent,
     UbicacionComponent,
-    ListarComponent
+    ListarComponent,
+    ListarViajesComponent,
+    CrearViajesComponent
 
   ],
   imports: [
