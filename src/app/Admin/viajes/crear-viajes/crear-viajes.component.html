@@ -1,1 +1,96 @@
-<p>crear-viajes works!</p>
+<div class="container mt-4">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-header">
+      Crear Viaje
+    </div>
+    <!-- Fila para el campo Origen -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <label for="origen" class="form-label">Origen</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="origen" readonly [value]="ubicacionOrigen?.nombre || ''" />
+          <button class="btn btn-outline-secondary" type="button" (click)="openUbicacionModal(true)">
+            Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila para el campo Destino -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <label for="destino" class="form-label">Destino</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="destino" readonly [value]="ubicacionDestino?.nombre || ''" />
+          <button class="btn btn-outline-secondary" type="button" (click)="openUbicacionModal(false)">
+            Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ejemplo de cómo agregar más campos en columnas -->
+    <div class="row">
+      <!-- Campo adicional en la misma fila -->
+      <div class="col-md-4 mb-3">
+        <label for="especie" class="form-label">Especie</label>
+        <select class="form-control" id="especie" formControlName="idEspecie">
+          <option *ngFor="let especie of especies" [value]="especie.id">
+            {{ especie.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Otro campo en la misma fila -->
+      <div class="col-md-4 mb-3">
+        <label for="tipoTarifa" class="form-label">Tipo de Tarifa</label>
+        <select class="form-control" id="tipoTarifa" formControlName="tipoTarifa">
+          <option value="Por Tonelada" selected>Por Tonelada</option>
+          <option value="Por Kilometro">Por Kilometro</option>
+          <option value="Fija">Fija</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="valorTarifa" class="form-label">Valor de la Tarifa</label>
+        <input type="number" class="form-control" id="valorTarifa" formControlName="valorTarifa" min="0" step="0.01" placeholder="Ingrese el valor de la tarifa">
+
+        <div *ngIf="form.get('valorTarifa')?.touched && form.get('valorTarifa')?.invalid" class="alert alert-danger">
+          <div *ngIf="form.get('valorTarifa')?.errors?.['required']">
+            El valor de la tarifa es obligatorio.
+          </div>
+          <div *ngIf="form.get('valorTarifa')?.errors?.['min']">
+            El valor de la tarifa no puede ser negativo.
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4 mb-3">
+        <label for="tipoAcoplado" class="form-label">Tipo de Acoplado</label>
+        <select multiple class="form-control" id="tipoAcoplado" formControlName="idTipoAcoplado">
+          <option *ngFor="let tipoAcoplado of tipoAcoplados" [value]="tipoAcoplado.id">
+            {{ tipoAcoplado.tipo }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad" formControlName="cantidad" min="1">
+      </div>
+    </div>
+
+
+    <!-- Botón de enviar -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>

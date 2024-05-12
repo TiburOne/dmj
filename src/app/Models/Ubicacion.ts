@@ -12,6 +12,14 @@ export class Ubicacion implements Base{
   provincia: string = "";
   direccion: string= "";
 
+  constructor(data?: any) {
+    this.id = data?.id;
+    this.nombre = data?.nombre;
+    this.ciudad = data?.ciudad;
+    this.provincia = data?.provincia;
+    this.direccion = data?.direccion;
+  }
+
   getText(): string {
     return this.nombre + this.direccion;
   }

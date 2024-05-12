@@ -16,11 +16,12 @@ import { ModalTipoAcopladoComponent } from './tipo-acoplado/modal-tipo-acoplado/
 import { EstadoViajesComponent } from './estado-viajes/estado-viajes.component';
 import { ModaleEstadosViajesComponent } from './estado-viajes/modale-estados-viajes/modale-estados-viajes.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-//import { CrearComponent } from './viajes/crear/crear.component';
 import { UbicacionComponent } from './ubicacion/crear/ubicacion.component';
 import { ListarComponent } from './ubicacion/listar/listar.component';
 import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
 import { CrearViajesComponent } from './viajes/crear-viajes/crear-viajes.component';
+import { UbicacionesComponent } from './search/ubicaciones/ubicaciones.component';
+import { QrDisplayComponent } from './qr-display/qr-display.component';
 
 
 
@@ -40,7 +41,9 @@ import { CrearViajesComponent } from './viajes/crear-viajes/crear-viajes.compone
     UbicacionComponent,
     ListarComponent,
     ListarViajesComponent,
-    CrearViajesComponent
+    CrearViajesComponent,
+    UbicacionesComponent,
+    QrDisplayComponent
 
   ],
   imports: [

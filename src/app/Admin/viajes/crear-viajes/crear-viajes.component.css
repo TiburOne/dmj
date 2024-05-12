@@ -1,0 +1,49 @@
+.container{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 0px !important;
+  padding-bottom: 0px;
+  background-color: gainsboro;
+
+}
+
+/* Asumiendo que tienes el color exacto, aquí un ejemplo */
+.form-header {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido al centro */
+  justify-content: center; /* Alinea horizontalmente el contenido al centro */
+  background-color: #017BFF; /* Color de fondo azul */
+  color: white; /* Texto en color blanco */
+  padding: 10px 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 20px; /* Ajusta el tamaño de la fuente según necesites */
+  margin-bottom: 3rem;
+  height: 3.5rem;
+  /* background-color: #017BFF;
+  color: white;
+  padding: 10px 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 20px;
+  height: 3.5rem;
+  text-align: center;
+  margin-bottom: 3rem; */
+}
+
+.form-body {
+  background-color: white; /* Fondo blanco para el cuerpo del formulario */
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #ccc; /* Añade un borde ligero como en el diseño */
+}
+
+.form-control {
+  border-radius: 0; /* Esto es para los inputs, si quieres bordes cuadrados */
+}
+
+.row{
+  margin-left: 0px;
+  margin-right: 0px;
+}

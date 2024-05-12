@@ -14,7 +14,7 @@ export class TipoAcopladoService {
   }
 
   obtenerTipos(){
-    return this.http.get<TipoAcoplado>(this.url + "/tipo_acoplado");
+    return this.http.get<TipoAcoplado[]>(this.url + "/tipo_acoplado");
   }
 
   crear(t: TipoAcoplado){
