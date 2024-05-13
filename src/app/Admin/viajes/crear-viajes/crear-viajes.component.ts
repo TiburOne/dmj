@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { TipoAcoplado } from 'src/app/Models/Tipo_Acoplado';
 import { AppSetings } from '../../app-setting/app-config.token';
 import { TipoAcopladoService } from '../../services/tipo_acoplado.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-viajes',
@@ -140,6 +141,11 @@ export class CrearViajesComponent {
       this.crudService.create(v).subscribe({
         next: (viaje) => {
           console.log('Viaje creado:', viaje);
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Viaje creado con éxito',
+            icon: 'success'
+          });
           this.dialogRef.close(viaje);
         },
         error: (error) => {
