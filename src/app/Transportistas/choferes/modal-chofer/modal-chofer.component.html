@@ -24,6 +24,31 @@
       <mat-label>Teléfono</mat-label>
       <input matInput formControlName="telefono">
     </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>DNI</mat-label>
+      <input matInput formControlName="dni">
+      <mat-error *ngIf="choferForm.get('dni')?.errors?.['required']">
+        El DNI es requerido.
+      </mat-error>
+      <mat-error *ngIf="choferForm.get('dni')?.errors?.['min']">
+        El DNI debe ser mayor o igual a 4000000.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CUIT</mat-label>
+      <input matInput formControlName="cuit">
+      <mat-error *ngIf="choferForm.get('cuit')?.errors?.['required']">
+        El CUIT es requerido.
+      </mat-error>
+      <mat-error *ngIf="choferForm.get('cuit')?.errors?.['min']">
+        El CUIT debe ser un número válido.
+      </mat-error>
+      <mat-error *ngIf="choferForm.get('cuit')?.errors?.['max']">
+        El CUIT debe ser un número válido.
+      </mat-error>
+    </mat-form-field>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">

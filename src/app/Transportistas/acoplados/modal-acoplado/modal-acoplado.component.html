@@ -1,1 +1,26 @@
-<p>modal-acoplado works!</p>
+<h2 mat-dialog-title>
+  {{ data ? "Actualizar Acoplado" : "Crear Acoplado" }}
+</h2>
+
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Dominio</mat-label>
+      <input matInput formControlName="dominio" [ngModel]="form.get('dominio')?.value | uppercase">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tipo de Acoplado</mat-label>
+      <mat-select formControlName="id_tipo_acoplado">
+        <mat-option *ngFor="let tipo of tiposAcoplado" [value]="tipo.id">
+          {{ tipo.tipo }} <!-- Asume que el modelo TipoAcoplado tiene una propiedad nombre -->
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button color="primary" (click)="saveForm()" [disabled]="form.invalid">Guardar</button>
+  </mat-dialog-actions>
+</form>

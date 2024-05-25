@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ViajeComun } from 'src/app/Models/Viaje';
+import { ViajeComun } from 'src/app/Models/ViajeComun';
 import { CRUDService, SERVICE_CONFIG } from '../../services/crud.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearViajesComponent } from '../crear-viajes/crear-viajes.component';

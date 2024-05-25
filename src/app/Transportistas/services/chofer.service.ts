@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Especie } from 'src/app/Models/Especie';
 import { Transportista } from 'src/app/Models/Transportista';
 import { MeService } from './me.service';
@@ -24,18 +24,33 @@ export class ChoferService {
     if (id > 0) {
       // Usar HttpParams para añadir parámetros de consulta
       const params = new HttpParams().set('id_transportista', id.toString());
-      return this.http.get<Chofer[]>(`${this.url}/obtenerChoferesPorTransportista`, { params });
+      return this.http.get<any>(`${this.url}/obtenerChoferConTransportista/${id}`);
     }
     throw new Error("No hay id de transportista asignado.");
 
   }
 
-  create(t: Chofer){
-    const body = t; // Ajusta este objeto según los campos requeridos por tu API
-    return this.http.post<Chofer>(this.url , body);
+  obtenerChoferesPorTransportista(): Observable<Chofer[]> {
+    const id = this.id_transportista;
+    if (id > 0) {
+      const params = new HttpParams().set('id_transportista', id.toString());
+      return this.http.get<Chofer[]>(`${this.url}/por-transportista`, { params });
+    }
+
+    throw new Error("No hay id de transportista asignado.");
+
   }
 
-  update(t: Chofer){
+  create(t: Chofer) {
+    const body = {
+      ...t, // Ajusta este objeto según los campos requeridos por tu API
+      id_transportista: this.id_transportista,
+    }
+
+    return this.http.post<Chofer>(this.url, body);
+  }
+
+  update(t: Chofer) {
     const body = t;
     return this.http.put<Chofer>(this.url + "/" + t.id, body);
   }

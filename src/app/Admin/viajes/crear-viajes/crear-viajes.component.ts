@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { CRUDService, SERVICE_CONFIG } from '../../services/crud.service';
-import { ViajeComun } from 'src/app/Models/Viaje';
+import { ViajeComun } from 'src/app/Models/ViajeComun';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UbicacionesComponent } from '../../search/ubicaciones/ubicaciones.component';

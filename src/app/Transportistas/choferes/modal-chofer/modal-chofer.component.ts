@@ -5,7 +5,6 @@ import { ChoferService } from '../../services/chofer.service';
 import Swal from 'sweetalert2';
 import { Chofer } from 'src/app/Models/Chofer';
 
-
 @Component({
   selector: 'app-modal-chofer',
   templateUrl: './modal-chofer.component.html',
@@ -23,7 +22,9 @@ export class ModalChoferComponent {
     this.choferForm = this.fb.group({
       nombre: [this.data ? this.data.nombre : '', Validators.required],
       apellido: [this.data ? this.data.apellido : '', Validators.required],
-      telefono: [this.data ? this.data.telefono : '']
+      telefono: [this.data ? this.data.telefono : ''],
+      dni: [this.data ? this.data.dni : '', [Validators.required, Validators.min(4000000)]],
+      cuit: [this.data ? this.data.cuit : '', [Validators.required, Validators.min(20000000000), Validators.max(99999999999)]]
     });
   }
 

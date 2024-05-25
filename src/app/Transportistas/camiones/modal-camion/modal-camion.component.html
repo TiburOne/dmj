@@ -1,1 +1,17 @@
-<p>modal-camion works!</p>
+<h2 mat-dialog-title>
+  {{ data ? "Actualizar Camión" : "Crear Camión" }}
+</h2>
+
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Dominio</mat-label>
+      <input matInput formControlName="dominio" [ngModel]="form.get('dominio')?.value | uppercase">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button color="primary" (click)="saveForm()" [disabled]="form.invalid">Guardar</button>
+  </mat-dialog-actions>
+</form>

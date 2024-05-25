@@ -12,6 +12,8 @@ import { ModalChoferComponent } from './choferes/modal-chofer/modal-chofer.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalCamionComponent } from './camiones/modal-camion/modal-camion.component';
 import { ModalAcopladoComponent } from './acoplados/modal-acoplado/modal-acoplado.component';
+import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
+import { TomarViajeComponent } from './viajes/tomar-viaje/tomar-viaje.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ModalAcopladoComponent } from './acoplados/modal-acoplado/modal-acoplad
     AcopladosComponent,
     ModalChoferComponent,
     ModalCamionComponent,
-    ModalAcopladoComponent
+    ModalAcopladoComponent,
+    ListarViajesComponent,
+    TomarViajeComponent
   ],
   imports: [
     CommonModule,
