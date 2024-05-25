@@ -29,7 +29,10 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <!-- Aquí puedes añadir botones de acción -->
+        <!-- añadir botones de acción -->
+        <button mat-icon-button matTooltip="Tomar Viaje" aria-label="Tomar Viaje">
+          <mat-icon>local_shipping</mat-icon>
+        </button>
       </td>
     </ng-container>
 

@@ -14,6 +14,8 @@ import { ModalCamionComponent } from './camiones/modal-camion/modal-camion.compo
 import { ModalAcopladoComponent } from './acoplados/modal-acoplado/modal-acoplado.component';
 import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
 import { TomarViajeComponent } from './viajes/tomar-viaje/tomar-viaje.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomMatPaginatorIntl } from '../common_modules/custom-paginator-intl';
 
 
 @NgModule({
@@ -35,6 +37,9 @@ import { TomarViajeComponent } from './viajes/tomar-viaje/tomar-viaje.component'
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },
+  ],
 })
 export class TransportistasModule { }

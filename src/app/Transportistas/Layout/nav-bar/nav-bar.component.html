@@ -1,18 +1,37 @@
-<mat-toolbar color="primary" class="mat-elevation-z8 bar">
-  <span>Dmj Trucks | {{title}}</span>
-  <span class="example-spacer"></span>
-  <button routerLink="./camiones" mat-button>Camiones</button>
-  <button routerLink="./acoplados" mat-button>Acoplados</button>
-  <button routerLink="./choferes" mat-button>Choferes</button>
-  <button [matMenuTriggerFor]="mnuViajes" mat-button>Viajes</button>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport
+               [attr.role]="isHandset ? 'dialog' : 'navigation'"
+               [mode]="isHandset ? 'over' : 'side'"
+               [opened]="isHandset && sidenavOpened">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="./camiones" (click)="sidenav.close()">Camiones</a>
+      <a mat-list-item routerLink="./acoplados" (click)="sidenav.close()">Acoplados</a>
+      <a mat-list-item routerLink="./choferes" (click)="sidenav.close()">Choferes</a>
+      <a mat-list-item [matMenuTriggerFor]="mnuViajes" (click)="sidenav.close()">Viajes</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8 bar">
+      <button *ngIf="isHandset" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Dmj Trucks | {{title}}</span>
+      <span class="example-spacer"></span>
+      <button *ngIf="!isHandset" routerLink="./camiones" mat-button>Camiones</button>
+      <button *ngIf="!isHandset" routerLink="./acoplados" mat-button>Acoplados</button>
+      <button *ngIf="!isHandset" routerLink="./choferes" mat-button>Choferes</button>
+      <button *ngIf="!isHandset" [matMenuTriggerFor]="mnuViajes" mat-button>Viajes</button>
+    </mat-toolbar>
 
-  <mat-menu #mnuViajes >
-    <button routerLink="./viajes" mat-menu-item> Viajes Disponibles </button>
-    <button routerLink="" mat-menu-item> Viajes Realizados </button>
-    <button routerLink="" mat-menu-item> Viajes Pendientes de Pago </button>
-    <button routerLink="" mat-menu-item> Listar Movimientos Internos</button>
+    <mat-menu #mnuViajes>
+      <button routerLink="./viajes" mat-menu-item> Viajes Disponibles </button>
+      <button routerLink="" mat-menu-item> Viajes Realizados </button>
+      <button routerLink="" mat-menu-item> Viajes Pendientes de Pago </button>
+      <button routerLink="" mat-menu-item> Listar Movimientos Internos</button>
+    </mat-menu>
 
-  </mat-menu>
-
-</mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
