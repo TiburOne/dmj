@@ -16,6 +16,7 @@ import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.comp
 import { TomarViajeComponent } from './viajes/tomar-viaje/tomar-viaje.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomMatPaginatorIntl } from '../common_modules/custom-paginator-intl';
+import { AsignarViajeComponent } from './viajes/asignar-viaje/asignar-viaje.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CustomMatPaginatorIntl } from '../common_modules/custom-paginator-intl'
     ModalCamionComponent,
     ModalAcopladoComponent,
     ListarViajesComponent,
-    TomarViajeComponent
+    TomarViajeComponent,
+    AsignarViajeComponent
   ],
   imports: [
     CommonModule,

@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Especie } from 'src/app/Models/Especie';
 import { Transportista } from 'src/app/Models/Transportista';
+import { API_URLS, AppSetings } from '../app-setting/app-config.token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransportistaService {
 
-  private url: string = "http://localhost:4000/api";
-  constructor(private http: HttpClient) {
-
+  private url: string = "";
+  constructor(private http: HttpClient, @Inject(API_URLS) private Urls: AppSetings) {
+    this.url = this.Urls.apiUrl;
   }
 
   obtenerTransportistas(){

@@ -30,7 +30,7 @@
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
         <!-- añadir botones de acción -->
-        <button mat-icon-button matTooltip="Tomar Viaje" aria-label="Tomar Viaje">
+        <button mat-icon-button matTooltip="Tomar Viaje" aria-label="Tomar Viaje" (click)="tomarViaje(element)">
           <mat-icon>local_shipping</mat-icon>
         </button>
       </td>

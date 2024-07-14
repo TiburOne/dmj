@@ -5,6 +5,7 @@ import { CamionesComponent } from './camiones/camiones.component';
 import { ChoferesComponent } from './choferes/choferes.component';
 import { AcopladosComponent } from './acoplados/acoplados.component';
 import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
+import { AsignarViajeComponent } from './viajes/asignar-viaje/asignar-viaje.component';
 
 const routes: Routes = [
   {path: ':id', component: LayoutComponent,
@@ -12,7 +13,8 @@ const routes: Routes = [
       {path: 'camiones', component: CamionesComponent},
       {path: 'choferes', component: ChoferesComponent},
       {path: 'acoplados', component: AcopladosComponent},
-      {path: 'viajes', component: ListarViajesComponent}
+      {path: 'viajes', component: ListarViajesComponent},
+      {path: 'asignar-viaje', component: AsignarViajeComponent}
     ]
   }
 ];

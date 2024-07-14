@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { CRUDService, SERVICE_CONFIG } from 'src/app/Admin/services/crud.service';
 import { Camion } from 'src/app/Models/Camion';
 import { ModalCamionComponent } from './modal-camion/modal-camion.component';
+import { MeService } from '../services/me.service';
 
 @Component({
   selector: 'app-camiones',
@@ -26,7 +27,7 @@ export class CamionesComponent implements OnInit, OnDestroy{
   subscripcion!: Subscription;
   filterData: Camion[] = []
 
-  constructor(private crudService: CRUDService<Camion>, private dialog: MatDialog){
+  constructor(private transportistaService: MeService, private crudService: CRUDService<Camion>, private dialog: MatDialog){
 
   }
 
@@ -40,7 +41,7 @@ export class CamionesComponent implements OnInit, OnDestroy{
 
   loadData() {
     try {
-      this.subscripcion = this.crudService.getAll().subscribe({
+      this.subscripcion = this.transportistaService.getCamiones().subscribe({
         next: (data) => {
           console.log(data);
           this.dataSource = data;

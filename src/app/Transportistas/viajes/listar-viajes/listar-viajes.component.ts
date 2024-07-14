@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { ViajeComun } from 'src/app/Models/ViajeComun';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ViajeComunService } from 'src/app/Admin/services/viaje-comun.service';
+import { EncryptionService } from '../../services/encryption.service';
+import { Router } from '@angular/router';
+import { MeService } from '../../services/me.service';
 
 @Component({
   selector: 'app-listar-viajes',
@@ -24,7 +27,12 @@ export class ListarViajesComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private viajeComunService: ViajeComunService) {}
+  constructor(
+    private meService: MeService,
+    private viajeComunService: ViajeComunService,
+    private encryptionService: EncryptionService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.loadData(this.pageIndex, this.pageSize);
@@ -58,5 +66,17 @@ export class ListarViajesComponent implements OnInit, OnDestroy {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.loadData(this.pageIndex, this.pageSize);
+  }
+
+  tomarViaje(viaje: ViajeComun) {
+    const idTransportista = this.meService.getIdTransportista();
+    if (idTransportista > 0) {
+      const encryptedTransportistaId = this.encryptionService.encrypt(idTransportista.toString());
+      const encryptedViajeId = this.encryptionService.encrypt(viaje.id.toString());
+      this.router.navigate([`/transportista/${idTransportista}/asignar-viaje`], { queryParams: { transportista: encryptedTransportistaId, viaje: encryptedViajeId } });
+    } else {
+      // Manejar el caso en que no haya transportista asignado
+      console.error("No hay id de transportista asignado.");
+    }
   }
 }

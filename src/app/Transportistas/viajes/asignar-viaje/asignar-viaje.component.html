@@ -1,0 +1,56 @@
+<div *ngIf="viaje">
+  <div class="grid-container">
+    <h1>Asignar Viaje</h1>
+    <p><strong>Origen:</strong> {{ viaje.Origen?.direccion }}</p>
+    <p><strong>Destino:</strong> {{ viaje.Destino?.direccion }}</p>
+    <p><strong>Tarifa:</strong> {{ viaje.valor_tarifa | currency }} </p>
+    <p><strong>Especie:</strong> {{ viaje.Especie?.nombre }}</p>
+  </div>
+
+  <form [formGroup]="asignarViajeForm" (ngSubmit)="asignarViaje()">
+    <div class="grid-container">
+      <mat-grid-list cols="2" rowHeight="90px" gutterSize="20px">
+        <mat-grid-tile [colspan]="1">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Camión</mat-label>
+            <mat-select formControlName="camion">
+              <mat-option *ngFor="let camion of camiones" [value]="camion.id">
+                {{ camion.dominio }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="camion?.invalid">Selecciona un camión</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Acoplado</mat-label>
+            <mat-select formControlName="acoplado">
+              <mat-option *ngFor="let acoplado of acoplados" [value]="acoplado.id">
+                {{ acoplado.dominio }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="acoplado?.invalid">Selecciona un acoplado</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Chofer</mat-label>
+            <mat-select formControlName="chofer">
+              <mat-option *ngFor="let chofer of choferes" [value]="chofer.id">
+                {{ chofer.nombre }} {{ chofer.apellido }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="chofer?.invalid">Selecciona un chofer</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="asignarViajeForm.invalid" class="round-button">
+        Asignar Viaje
+      </button>
+    </div>
+  </form>
+</div>

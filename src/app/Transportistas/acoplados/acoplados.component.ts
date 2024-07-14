@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CRUDService, SERVICE_CONFIG } from 'src/app/Admin/services/crud.service';
 import { Acoplado } from 'src/app/Models/Acoplado';
 import { ModalAcopladoComponent } from './modal-acoplado/modal-acoplado.component';
+import { MeService } from '../services/me.service';
 
 @Component({
   selector: 'app-acoplados',
@@ -26,6 +27,7 @@ export class AcopladosComponent implements OnInit, OnDestroy {
   filterData: Acoplado[] = [];
 
   constructor(
+    private transportistaService : MeService,
     private crudService: CRUDService<Acoplado>,
     private dialog: MatDialog
   ) {}
@@ -40,7 +42,7 @@ export class AcopladosComponent implements OnInit, OnDestroy {
 
   loadData() {
     try {
-      this.subscripcion = this.crudService.getAll().subscribe({
+      this.subscripcion = this.transportistaService.getAcoplados().subscribe({
         next: (data) => {
           console.log(data);
           this.dataSource = data;
