@@ -17,7 +17,7 @@ export class WebSocketService {
 
   private connect(): void {
     // Inicializa el socket aquí con configuración por defecto
-    this.socket = io('http://localhost:4000', {
+    this.socket = io(this.Urls.socketUrl, {
       reconnectionAttempts: 5,  // Número de intentos de reconexión
       reconnectionDelay: 3000,   // Tiempo de espera entre reconexiones
     });
