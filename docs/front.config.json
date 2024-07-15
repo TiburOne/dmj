@@ -1,6 +1,6 @@
 {
   "apiUrl2": "http://localhost:4000/api",
   "apiUrl": "https://dmj-transporte-5fdyqgq6ka-uc.a.run.app/api",
-  "socketUrl": "http://localhost:4000"
+  "socketUrl": "https://dmj-transporte-5fdyqgq6ka-uc.a.run.app"
 
 }
