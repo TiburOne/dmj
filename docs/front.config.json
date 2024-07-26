@@ -1,7 +1,7 @@
 {
   "apiUrl2": "http://localhost:4000/api",
-  "apiUrl": "https://dmj-transporte-5fdyqgq6ka-uc.a.run.app/api",
-  "socketUrl": "https://dmj-transporte-5fdyqgq6ka-uc.a.run.app",
+  "apiUrl": "http://vps-4268124-x.dattaweb.com/api",
+  "socketUrl": "http://vps-4268124-x.dattaweb.com",
   "socketUrl2": "http://localhost:4000"
 
 }
